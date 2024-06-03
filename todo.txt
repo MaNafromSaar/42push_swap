@@ -1,0 +1,2 @@
+-own ft_split (rewrite for char* and)
+-own libft
