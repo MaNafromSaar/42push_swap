@@ -28,30 +28,46 @@ void case_3(t_stack_node **a)
 
 void case_4(t_stack_node **a, t_stack_node **b) 
 {
-    t_stack_node *min_node;
+    t_stack_node *min;
     if (stack_is_sorted(*a) || stack_size(*a) != 4)
         return;
-    min_node = find_min(*a);
-    while ((*a)->data != min_node->data)
-        ra(a);
+    min = find_min(*a);
+    if ((*a)->data != min->data) 
+    {
+        while ((*a)->data != min->data)
+            ra(a);
+    }
     pb(a, b);
-    case_3(a);
+    if (stack_size(*a) == 3 && !stack_is_sorted(*a))
+        case_3(a);
     pa(a, b);
 }
 
 
 void case_5(t_stack_node **a, t_stack_node **b)
 {
-    t_stack_node *min_node;
+    t_stack_node *min;
 
     if (stack_is_sorted(*a))
         return;
-    min_node = find_min(*a);
-    if (!min_node)
-        return;
-    while ((*a)->data != min_node->data)
-        ra(a);
+    min = find_min(*a);
+    if ((*a)->data != min->data) 
+    {
+        while ((*a)->data != min->data)
+            ra(a);
+    }
     pb(a, b);
-    case_4(a, b);
-    pa(a, b);
+    while (*a!= NULL) 
+    {
+        printf("%d ", (*a)->data);
+        *a = (*a)->next;
+    }
+    if (stack_size(*a) == 4 && !stack_is_sorted(*a))
+        case_4(a, b);
+    while (a!= NULL) 
+    {
+        printf("%d ", (*a)->data);
+        *a = (*a)->next;
+    }
+    //pa(a, b);
 }

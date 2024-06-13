@@ -35,7 +35,7 @@ long atoi_long(const char *s)
     return (res * sign);
 }
 
-static void append_node(t_stack_node **stack, long data)
+/*static void append_node(t_stack_node **stack, long data)
 {
     t_stack_node    *new_node;
     t_stack_node    *last;
@@ -56,19 +56,28 @@ static void append_node(t_stack_node **stack, long data)
         last = last->next;
     last->next = new_node;
     new_node->prev = last;
-}
+}*/
 
 void initialize_stack(t_stack_node **stack, int argc, char **argv)
 {
     int i;
-    long data;
+    t_stack_node *last_node = NULL;
 
-    i = 1;
-    while (i < argc)
+    *stack = NULL;
+    if (argc == 0 || argv == NULL)
+        return;
+
+    for (i = argc - 1; i >= 0; i--)
     {
-        data = atoi_long(argv[i]);
-        append_node(stack, data);
-        i++;
+        t_stack_node *new_node = malloc(sizeof(t_stack_node));
+        new_node->data = atoi(argv[i]);
+        new_node->next = NULL;
+        new_node->prev = last_node;
+        if (last_node != NULL)
+            last_node->next = new_node;
+        else
+            *stack = new_node;
+        last_node = new_node;
     }
 }
 

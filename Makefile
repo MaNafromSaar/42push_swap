@@ -2,7 +2,7 @@ NAME		= push_swap
 
 CC			= gcc
 INC			= ./
-CFLAGS		= -Wall -Wextra -Werror -I./
+CFLAGS		= -g -Wall -Wextra -Werror -I./
 RM			= rm -f
 OBJ_PATH 	= ./obj/
 

@@ -23,6 +23,12 @@ int main(int argc, char **argv)
     else if (argc == 2)
         argv = split(argv[1], ' ');
     initialize_stack(&a, argc, argv);
+    t_stack_node *current = a;
+    while (current != NULL) {
+        printf("%d ", current->data);
+        current = current->next;
+    }
+    printf("\n");
     if (stack_is_sorted(a))
         return (0);
     if (stack_size(a) == 2)
@@ -35,5 +41,11 @@ int main(int argc, char **argv)
         case_5(&a, &b);
     else
         case_x(&a, &b);
+    current = a;
+    while (current != NULL) {
+        printf("%d ", current->data);
+        current = current->next;
+    }
+    printf("\n");
     return (0);
 }

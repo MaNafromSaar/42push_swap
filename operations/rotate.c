@@ -18,7 +18,7 @@ static void	rotate(t_stack_node **stack)
     t_stack_node *last;
 
     if (*stack == NULL || (*stack)->next == NULL)
-        return;  // No need to rotate if the stack is empty or has only one node
+        return; 
 
     first = *stack;
     *stack = (*stack)->next;
@@ -27,7 +27,6 @@ static void	rotate(t_stack_node **stack)
     last = *stack;
     while (last->next != NULL)
         last = last->next;
-
     last->next = first;
 }
 

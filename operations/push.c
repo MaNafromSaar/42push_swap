@@ -13,7 +13,7 @@
 #include "../push_swap.h"
 
 
-static void	push(t_stack_node **dst, t_stack_node **src)
+/*static void	push(t_stack_node **dst, t_stack_node **src)
 {
 	t_stack_node	*node_to_push;
 	if (!*src)
@@ -34,16 +34,26 @@ static void	push(t_stack_node **dst, t_stack_node **src)
         node_to_push->next->prev = node_to_push;
         *dst = node_to_push;
     }
+}*/
+
+void pa(t_stack_node **a, t_stack_node **b) 
+{
+    t_stack_node *top;
+    if (*b == NULL)
+        return;
+    top = *b;
+    *b = (*b)->next;
+    top->next = *a;
+    *a = top;
 }
 
-void	pa(t_stack_node **a, t_stack_node **b)
+void pb(t_stack_node **a, t_stack_node **b) 
 {
-	push(a, b); 
-	write(1, "pa\n", 3);
-}
-
-void	pb(t_stack_node **b, t_stack_node **a)
-{
-	push(b, a);
-	write(1, "pb\n", 3);
+    t_stack_node *top;
+    if (*a == NULL)
+        return;
+    top = *a;
+    *a = (*a)->next;
+    top->next = *b;
+    *b = top;
 }
